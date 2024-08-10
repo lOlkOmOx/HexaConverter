@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import BackButton from "./BackButton";
-import '../Styles/HexaConverter.css'
+import './HexaConverter.css'
 
 function HexaConverter() {
 
@@ -9,7 +8,7 @@ function HexaConverter() {
 
     function convertToHexadecimal(event) {
         event.preventDefault()
-        let result = []; //result array
+        let result = [] //result array
     
     //input validation   
     
@@ -17,7 +16,7 @@ function HexaConverter() {
         if(isNaN(input)){
             setResult("Value " + input + " is not a number.")
             return
-            }
+        }
     //check if input is integer
         else if(input%1 !== 0){
             setResult("Value " + input + " is not integer.")
@@ -33,11 +32,11 @@ function HexaConverter() {
     
             //loop to find a reminder, pushing it in result variable
             for (let i=input;i>0;i=parseInt(i/16)) {
-                result.push(i%16);
+                result.push(i%16)
             }
     
             //reversing result to correct order
-            result = result.reverse(); 
+            result = result.reverse()
     
             //transform numbers between 10-15 to hexadecimal
             for (let i=0;i<result.length;i++) {
@@ -57,7 +56,7 @@ function HexaConverter() {
             }
     
             //unite results from numbers and strings to string only
-            result = result.join("");  
+            result = result.join("") 
     
             //stopping function and logging the result
             console.log(result)
@@ -67,8 +66,8 @@ function HexaConverter() {
      }
 
      const handleInput = (event) => {
-        setInput(event.target.value);
-      };
+        setInput(event.target.value)
+      }
 
     return(
         <>
@@ -79,8 +78,6 @@ function HexaConverter() {
                     <input className="hexaInput" onChange={handleInput}  autoFocus/>
                     <button className="hexaButton" type="submit" onClick={convertToHexadecimal}>Sumbit</button>
                 </form>
-                
-                <BackButton/>
             </div>
         </>
     )
